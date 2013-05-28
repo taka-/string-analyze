@@ -14,6 +14,8 @@ class AnalyzeString private (value: String) {
     }
     .sortWith { _.xs < _.xs }
   }
+
+  lazy val bwt: String = suffixArray.map { _.x }.mkString
 }
 
 object AnalyzeString {

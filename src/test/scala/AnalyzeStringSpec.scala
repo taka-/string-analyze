@@ -17,4 +17,9 @@ class AnalyzeStringSuite extends FunSuite {
     assert(array(3).xs == "abracadabra$")
     assert(array(11).xs == "racadabra$")
   }
+
+  test("bwt") {
+    val bwt = AnalyzeString("abracadabra").bwt
+    assert(bwt == "ard$rcaaaabb")
+  }
 }
