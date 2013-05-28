@@ -1,15 +1,18 @@
 package analyze
 
-case class Suffix(value: String, index: Int)
+case class Suffix(x: Char, xs: String, index: Int)
 
 class AnalyzeString private (value: String) {
   lazy val suffixArray: List[Suffix] = {
-    Suffix("$", value.length) :: value.reverse.foldLeft(List.empty: List[String]) {
+    value.reverse.foldLeft(List("$")) {
       (xs, x) => 
-        (x.toString + xs.headOption.getOrElse("")) :: xs 
+        (x.toString + xs.head) :: xs 
     }.zipWithIndex
-    .map { case (xs, index) => Suffix(xs + "$", index) }
-    .sortWith { _.value < _.value }
+    .map { case (xs, index) => index match {
+      case 0 => Suffix('$', xs , index)
+      case _ => Suffix(value(index - 1), xs , index) }
+    }
+    .sortWith { _.xs < _.xs }
   }
 }
 
