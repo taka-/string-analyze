@@ -7,4 +7,9 @@ class BWTSpec extends FunSuite {
   test("bwt decode") {
     assert("abracadabra$" == BWT.decode("ard$rcaaaabb"))
   }
+
+  test("bwt encode") {
+    println(BWT.encode("ard$rcaaaabb"))
+    assert("ard$rcaaaabb" == BWT.encode("abracadabra"))
+  }
 }
