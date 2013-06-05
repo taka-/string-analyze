@@ -1,4 +1,4 @@
-package bwt
+package analyze
 
 object BWT {
   def decode(tb: String): String = {
