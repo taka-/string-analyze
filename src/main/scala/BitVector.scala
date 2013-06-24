@@ -1,8 +1,12 @@
 package vector
 
+trait Bit 
+object ON extends Bit
+object OFF extends Bit
+
 trait BitVector {
-  def setBit(pos: Int, value: Int): Unit
-  def getBit(pos: Int): Int
+  def setBit(pos: Int, value: Bit): Unit
+  def getBit(pos: Int): Bit
 }
 
 /**
@@ -11,12 +15,12 @@ trait BitVector {
 class ListBitVector(max: Int) extends BitVector {
   import scala.collection.mutable.ListBuffer
   // 0で初期化したListを作成
-  private val array = ListBuffer.fill(max) { 0 }
-  def setBit(pos: Int, value: Int): Unit = {
+  private val array:ListBuffer[Bit] = ListBuffer.fill(max) { OFF }
+  def setBit(pos: Int, value: Bit): Unit = {
     array(pos) = value
   }
 
-  def getBit(pos: Int): Int = {
+  def getBit(pos: Int): Bit = {
     array(pos)
   }
 }
