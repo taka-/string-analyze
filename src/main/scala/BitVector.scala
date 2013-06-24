@@ -1,8 +1,15 @@
 package vector
 
-trait Bit 
-object ON extends Bit
-object OFF extends Bit
+trait Bit {
+  val value: Int
+}
+object ON extends Bit {
+  val value = 1
+}
+
+object OFF extends Bit {
+  val value = 0
+}
 
 trait BitVector {
   def setBit(pos: Int, value: Bit): Unit
@@ -22,5 +29,9 @@ class ListBitVector(max: Int) extends BitVector {
 
   def getBit(pos: Int): Bit = {
     array(pos)
+  }
+
+  override def toString: String = {
+    array.map { _.value }.mkString("")
   }
 }
